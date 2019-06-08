@@ -2,13 +2,16 @@ const Koa = require("koa");
 const logger = require("koa-logger");
 const koaBody = require("koa-body");
 const app = new Koa();
+const cors = require("@koa/cors");
 
 app.use(
   koaBody({
     jsonLimit: "1kb"
   })
 );
+
 app.use(logger());
+app.use(cors());
 
 app.use(async function(ctx) {
   const body = ctx.request.body;
